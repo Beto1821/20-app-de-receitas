@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen, waitFor } from '@testing-library/react';
+import { screen, waitFor, within } from '@testing-library/react';
 import App from '../App';
 import renderWithRouter from './renderWithRouter';
 import userEvent from '@testing-library/user-event';
@@ -35,5 +35,5 @@ test('Testa retorno da função getEmail do localstorage', async () => {
  
     expect(screen.getByText(/beto@uol.com.br/ig)).toBeInTheDocument();
   });
-
+  
 });

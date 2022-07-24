@@ -71,14 +71,11 @@ describe('Testa CategoryFilters foods', () => {
     const allBtn = await screen.findByTestId('All-category-filter');
     userEvent.click(allBtn)
     
-    await waitFor(() => screen.findByTestId('0-card-img'), {timeout: 5000})
-    const corba = await screen.findByTestId('0-card-img')
-    userEvent.click(corba)
+    history.push('/foods/52977')
+    await screen.findByText(/corba/i)
 
-    expect(await screen.findByAltText(/corba/i))
-
-    expect(await screen.findByAltText(/botão de compartilhar/i))
-    expect(await screen.findByAltText(/botão de favoritar/i))
+    expect(await screen.findByTestId('share-btn'))
+    expect(await screen.findByTestId('favorite-btn'))
     expect(await screen.findByRole('heading', {name: /side/i}))
     
     const ingName = await screen.findByTestId('0-ingredient-name-and-measure')
@@ -95,9 +92,7 @@ describe('Testa CategoryFilters foods', () => {
 
     const recoList = await screen.findByTestId('0-recomendation-card')
     expect(recoList).toBeInTheDocument()
-
-
-    
+  
     
     const startRecipe = await screen.findByTestId('start-recipe-btn')
     expect(startRecipe).toBeInTheDocument()
@@ -116,13 +111,12 @@ describe('Testa CategoryFilters drinks', () => {
     const allBtn = await screen.findByTestId('All-category-filter');
     userEvent.click(allBtn)
     
-    await waitFor(() => screen.findByTestId('0-card-img'), {timeout: 5000})
-    const corba = await screen.findByTestId('0-card-img')
-    userEvent.click(corba)
+    history.push('/drinks/15997')
+    await screen.findByTestId('recipe-title');
 
-    expect(await screen.findByAltText(/gg/i))
-    expect(await screen.findByAltText(/botão de compartilhar/i))
-    expect(await screen.findByAltText(/botão de favoritar/i))
+    expect(await screen.findByText('GG'))
+    expect(await screen.findByTestId('share-btn'))
+    expect(await screen.findByTestId('favorite-btn'))
     expect(await screen.findByRole('heading', {name: /Optional alcohol/i}))
     
     const ingName = await screen.findByTestId('0-ingredient-name-and-measure')
@@ -176,7 +170,7 @@ describe('Testa botão de favoritar', () => {
     await waitFor(() => screen.getByRole('heading', {
     name: /corba/i}), {timeout: 5000})
 
-    const favBtn = screen.getByAltText('botão de favoritar');
+    const favBtn = screen.getByAltText('Desfavoritar receita de Corba');
     expect(localStorage.getItem('favoriteRecipes')).toBeNull();
 
     expect(favBtn).toHaveAttribute('src', 'whiteHeartIcon.svg' );
