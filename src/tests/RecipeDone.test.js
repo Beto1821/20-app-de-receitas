@@ -118,7 +118,7 @@ describe('Testando recipe in progress', () => {
     const title = await screen.findByText('GG');
     expect(title).toBeInTheDocument();
 
-    const done= await screen.findByText('Done in: 7/24/2022');
+    const done= screen.getByTestId('0-horizontal-done-date');
     expect(done).toBeInTheDocument();
     
     const btnComp = screen.getByTestId('0-horizontal-share-btn');

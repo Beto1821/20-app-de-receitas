@@ -103,6 +103,7 @@ describe('Testa CategoryFilters foods', () => {
   });
 });
 
+
 describe('Testa CategoryFilters drinks', () => {
   test('Testa category filters drinks', async () => {
     const { history } = renderWithRouter(<App />);
@@ -139,6 +140,17 @@ describe('Testa CategoryFilters drinks', () => {
     screen.getByText('Receitas em progresso')
     expect(startRecipe).not.toBeInTheDocument()
 
+    const ingredientsList = await screen.findAllByRole('checkbox');
+    ingredientsList.forEach((e) => userEvent.click(e));
+
+    history.push('/drinks/15997')
+    const title = await screen.findByTestId('recipe-title');
+    expect(title).toBeInTheDocument()
+    
+    // const startBtn = await screen.findByTestId('start-recipe-btn')
+    // expect(startBtn.innerHTML).toBe('Continue Recipe')
+
+
   });
 });
 
@@ -159,7 +171,7 @@ describe('Testa botão de copiar link', () => {
   });
 });
 
-describe('Testa botão de favoritar', () => {
+describe('Testa botão de favoritar foods', () => {
   test('Testa favoritos', async () => {
     // global.fetch = jest.fn(async () => ({
     //   json: async() => mockCorba
@@ -200,7 +212,53 @@ describe('Testa botão de favoritar', () => {
   "image": "https://www.themealdb.com/images/media/meals/58oia61564916529.jpg"
 });
 
+});
+
   });
+
+  describe('Testa botão de favoritar drinks', () => {
+  test('Testa favoritos', async () => {
+    // global.fetch = jest.fn(async () => ({
+    //   json: async() => mockCorba
+    // })) 
+
+    localStorage.clear();
+    const { history } = renderWithRouter(<App />);
+    history.push('/drinks/15997');
+    await waitFor(() => screen.getByRole('heading', {
+    name: /gg/i}), {timeout: 5000})
+
+    const favBtn = screen.getByAltText('Desfavoritar receita de GG');
+    expect(localStorage.getItem('favoriteRecipes')).toBeNull();
+
+    expect(favBtn).toHaveAttribute('src', 'whiteHeartIcon.svg' );
+    userEvent.click(favBtn);
+    expect(favBtn).toHaveAttribute('src', 'blackHeartIcon.svg' );
+    userEvent.click(favBtn);
+
+    expect(favBtn).toHaveAttribute('src', 'whiteHeartIcon.svg' );
+    userEvent.click(favBtn);
+    expect(favBtn).toHaveAttribute('src', 'blackHeartIcon.svg' );
+    expect(JSON.parse(localStorage.getItem('favoriteRecipes'))).toHaveLength(1)
+
+    const response = localStorage.getItem('favoriteRecipes');
+  
+    const obj = JSON.parse(response)[0];
+      
+    expect(obj.name).toEqual('GG');
+
+    expect(obj).toEqual(
+    {
+"alcoholicOrNot": "Optional alcohol",
+"category": "Ordinary Drink",
+"id": "15997",
+"image": "https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg",
+"name": "GG",
+"nationality": "",
+"type": "drink",
+});
+
+});
 
 // describe('Testa botão de favoritar', () => {
 //   test('Testa favoritos', async () => {

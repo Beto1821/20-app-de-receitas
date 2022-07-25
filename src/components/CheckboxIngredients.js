@@ -20,7 +20,6 @@ function CheckboxIngredient(props) {
       meals: {},
       cocktails: {},
     });
-    console.log(inProgressRecipesStr);
     setInProgressRecipes(JSON.parse(inProgressRecipesStr));
   }, []);
 

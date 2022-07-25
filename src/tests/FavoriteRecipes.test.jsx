@@ -5,15 +5,7 @@ import renderWithRouter from './renderWithRouter';
 import userEvent from '@testing-library/user-event';
 
 const favoriteRecipesMock = [
-  // {
-  //   "alcoholicOrNot": "",
-  //   "category": "Goat",
-  //   "id": "52968",
-  //   "image": "https://www.themealdb.com/images/media/meals/cuio7s1555492979.jpg",
-  //   "name": "Mbuzi Choma (Roasted Goat)",
-  //   "nationality": "Kenyan",
-  //   "type": "food",
-  // },
+
   // {
   //   "alcoholicOrNot": "",
   //   "category": "Side",
@@ -32,10 +24,19 @@ const favoriteRecipesMock = [
     "nationality": "",
     "type": "drink",
   },
+  {
+    "alcoholicOrNot": "",
+    "category": "Goat",
+    "id": "52968",
+    "image": "https://www.themealdb.com/images/media/meals/cuio7s1555492979.jpg",
+    "name": "Mbuzi Choma (Roasted Goat)",
+    "nationality": "Kenyan",
+    "type": "food",
+   },
 ];
 
 describe('Testa página de receitas favoritas', () => {
-  test('Verifica se receitas favoritas estão na página', () => {
+  test('Verifica se drink favorito esta na página', () => {
     localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipesMock));
     const { history } = renderWithRouter(<App />);
     history.push('/profile');
@@ -58,12 +59,43 @@ describe('Testa página de receitas favoritas', () => {
     expect(drinkBtn).toBeInTheDocument();
 
 
-    screen.getByText(/abc/i)
-    // expect(favBtn).toBeInTheDocument()
+    const title = screen.getByRole('heading', {name: /abc/i})
+    expect(title).toBeInTheDocument()
 
+    const shareBtn = screen.getByRole('heading', {name: /abc/i})
+    expect(shareBtn).toBeInTheDocument();
 
+    const favIcon = screen.getByRole('heading', {name: /abc/i})
+    expect(favIcon).toBeInTheDocument();
 
+    const imgFav = screen.getByTestId('0-horizontal-image')
+    expect(imgFav).toBeInTheDocument();
+
+    const tipeFav = screen.getByTestId('0-horizontal-top-text')
+    expect(tipeFav).toBeInTheDocument();
 
   });
+    test('Verifica se drink favorito esta na página', () => {
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favoriteRecipesMock));
+    const { history } = renderWithRouter(<App />);
+    history.push('/profile');
 
+    const fav = localStorage.getItem('favoriteRecipes')
+    //console.log(fav)
+
+    const favRecipes = screen.getByTestId('profile-favorite-btn');
+    expect(favRecipes).toBeInTheDocument()
+    userEvent.click(favRecipes);
+    expect(history.location.pathname).toBe('/favorite-recipes');
+
+    const title = screen.getByRole('heading', {name: /Mbuzi Choma/i})
+    expect(title).toBeInTheDocument()
+
+    const imgFav = screen.getByTestId('1-horizontal-image')
+    expect(imgFav).toBeInTheDocument();
+
+    const tipeFav = screen.getByTestId('1-horizontal-top-text')
+    expect(tipeFav).toBeInTheDocument();
+
+  });
 })
