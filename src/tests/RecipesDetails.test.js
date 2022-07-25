@@ -137,7 +137,7 @@ describe('Testa CategoryFilters drinks', () => {
 
     userEvent.click(startRecipe)
     expect(history.location.pathname).toBe('/drinks/15997/in-progress');
-    screen.getByText('Receitas em progresso')
+
     expect(startRecipe).not.toBeInTheDocument()
 
     const ingredientsList = await screen.findAllByRole('checkbox');

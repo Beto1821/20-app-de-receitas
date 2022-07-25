@@ -59,13 +59,13 @@ describe('Testa página de receitas favoritas', () => {
     expect(drinkBtn).toBeInTheDocument();
 
 
-    const title = screen.getByRole('heading', {name: /abc/i})
+    const title = screen.getByText(/abc/i)
     expect(title).toBeInTheDocument()
 
-    const shareBtn = screen.getByRole('heading', {name: /abc/i})
+    const shareBtn = screen.getByRole('button', {  name: /compartilhar receita de abc/i})
     expect(shareBtn).toBeInTheDocument();
 
-    const favIcon = screen.getByRole('heading', {name: /abc/i})
+    const favIcon = screen.getByRole('button', {  name: /desfavoritar receita de abc/i})
     expect(favIcon).toBeInTheDocument();
 
     const imgFav = screen.getByTestId('0-horizontal-image')
@@ -88,7 +88,7 @@ describe('Testa página de receitas favoritas', () => {
     userEvent.click(favRecipes);
     expect(history.location.pathname).toBe('/favorite-recipes');
 
-    const title = screen.getByRole('heading', {name: /Mbuzi Choma/i})
+    const title = screen.getByText(/mbuzi choma \(roasted goat\)/i)
     expect(title).toBeInTheDocument()
 
     const imgFav = screen.getByTestId('1-horizontal-image')
