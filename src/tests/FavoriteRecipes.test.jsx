@@ -97,5 +97,5 @@ describe('Testa página de receitas favoritas', () => {
     const tipeFav = screen.getByTestId('1-horizontal-top-text')
     expect(tipeFav).toBeInTheDocument();
 
-  });
+   });
 })
