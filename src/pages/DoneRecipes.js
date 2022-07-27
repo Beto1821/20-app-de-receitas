@@ -56,6 +56,7 @@ function DoneRecipes({ history: { location: { pathname } } }) {
         <Card.Text className="fs-4 ml-2">Tags</Card.Text>
         <div className="tags-container">
           {recipe.tags !== undefined && recipe.tags.map(
+
             (tag, ind) => (
               <span
                 className="tag"
