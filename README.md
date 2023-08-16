@@ -1801,5 +1801,5 @@ As telas sofrem variações dependendo do tipo da receita (se é comida ou bebid
 
   - Se limpa todas as chaves da localStorage;
   - Se a rota muda para a tela de login.
-  - Verifica a cobertura de 90% do componente Profile.
+  - Verifica a cobertura de 90% do componente Profile
 </details>
