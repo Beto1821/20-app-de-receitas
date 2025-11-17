@@ -16,9 +16,9 @@ function Login(props) {
   useEffect(() => {
     const enabledButton = () => {
       const minimumPassword = 6;
-      const regExp = /\w+@[a-z]+\.com/g;
+      const regExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      if (email.match(regExp) && password.length > minimumPassword) {
+      if (regExp.test(email) && password.length >= minimumPassword) {
         setIsDisabled(false);
       } else {
         setIsDisabled(true);
