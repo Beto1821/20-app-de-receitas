@@ -10,7 +10,7 @@
 
 Aplicação React mobile-first para buscar, visualizar, filtrar, favoritar e acompanhar o progresso de preparação de receitas de comidas e bebidas.
 
-[Demo](#) • [Documentação](#-documentação) • [Instalação](#-instalação) • [Deploy](#-deploy)
+[Demo](https://20-app-de-receitas.vercel.app/) • [Documentação](#-documentação) • [Instalação](#-instalação) • [Deploy](#-deploy)
 
 </div>
 
