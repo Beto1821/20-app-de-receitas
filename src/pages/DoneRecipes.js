@@ -10,11 +10,10 @@ import './DoneRecipes.css';
 
 function DoneRecipes({ history: { location: { pathname } } }) {
   const { doneRecipes, filteredRecipes, setFilteredRecipes } = useContext(RecipeContext);
-  console.log(filteredRecipes);
   useEffect(() => setFilteredRecipes(doneRecipes), [doneRecipes, setFilteredRecipes]);
 
   const createRecipeCards = (recipe, index) => (
-    <Card key={ index } className="done-card shadow-sm">
+    <Card key={ recipe.id } className="done-card shadow-sm">
       <Link to={ `/${recipe.type}s/${recipe.id}` }>
         <Card.Img
           className="done-image"
@@ -60,7 +59,7 @@ function DoneRecipes({ history: { location: { pathname } } }) {
             (tag, ind) => (
               <span
                 className="tag"
-                key={ ind }
+                key={ `${recipe.id}-${tag}-${ind}` }
                 data-testid={ `${index}-${tag}-horizontal-tag` }
               >
                 {tag}
@@ -91,7 +90,11 @@ function DoneRecipes({ history: { location: { pathname } } }) {
 }
 
 DoneRecipes.propTypes = {
-  history: PropTypes.shape().isRequired,
+  history: PropTypes.shape({
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default DoneRecipes;

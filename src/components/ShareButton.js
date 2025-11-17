@@ -26,11 +26,11 @@ function ShareButton({ recipe: { id, name, type }, index }) {
 
 ShareButton.propTypes = {
   recipe: PropTypes.shape({
-    id: PropTypes.number,
+    id: PropTypes.string,
     name: PropTypes.string,
     type: PropTypes.string,
-  }),
-  index: PropTypes.number,
-}.isRequired;
+  }).isRequired,
+  index: PropTypes.number.isRequired,
+};
 
 export default ShareButton;

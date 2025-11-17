@@ -37,7 +37,7 @@ function RecipeDetails({ history, match }) {
       setFavoriteIcon(() => (favoriteRecipes.some((item) => item.id === recipe.idDrink)
         ? blackHeartIcon : whiteHeartIcon));
     }
-  }, [favoriteIcon, favoriteRecipes, recipe, pathname]);
+  }, [favoriteRecipes, recipe, pathname]);
 
   useEffect(() => {
     const inProgressRecipesStr = localStorage.getItem('inProgressRecipes')
@@ -230,7 +230,18 @@ function RecipeDetails({ history, match }) {
   );
 }
 
-RecipeDetails.propTypes = { history: PropTypes.shape(), match: PropTypes.shape(),
+RecipeDetails.propTypes = {
+  history: PropTypes.shape({
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+    }),
+    push: PropTypes.func,
+  }),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
 }.isRequired;
 
 export default RecipeDetails;

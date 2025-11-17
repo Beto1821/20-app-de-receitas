@@ -55,32 +55,24 @@ export function RecipeProvider({ children }) {
 
   useEffect(() => {
     const fetchCategoryFilter = async () => {
+      if (!categories.currentCategory.pathname) return;
+
       let newData = [];
       if (categories.currentCategory.pathname === '/foods') {
-        switch (categories.currentCategory.category) {
-        case 'All': {
+        if (categories.currentCategory.category === 'All') {
           newData = await fetchFoods();
-          setData(newData);
-          break;
-        }
-        default: {
+        } else {
           newData = await fetchFoodsByCategory(categories.currentCategory.category);
-          setData(newData);
         }
-        }
+        setData(newData);
       }
       if (categories.currentCategory.pathname === '/drinks') {
-        switch (categories.currentCategory.category) {
-        case 'All': {
+        if (categories.currentCategory.category === 'All') {
           newData = await fetchDrinks();
-          setData(newData);
-          break;
-        }
-        default: {
+        } else {
           newData = await fetchDrinksByCategory(categories.currentCategory.category);
-          setData(newData);
         }
-        }
+        setData(newData);
       }
     };
     fetchCategoryFilter();

@@ -1,50 +1,110 @@
 .page-container {
-  background-color: #e9ecef;
+  background-color: #f8f9fa;
   width: 100vw;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+body.dark .page-container {
+  background-color: #1a1a1a;
 }
 
 .card-container {
-  width: 75%;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
 .done-card {
-  margin: 0 auto;
-  margin-bottom: 20px;
+  margin: 0 auto 1.5rem;
   padding: 0;
   width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+}
+
+.done-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+body.dark .done-card {
+  background-color: #2d2d2d;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .done-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
 .done-image {
-  height: 180px;
+  height: 200px;
   object-fit: cover;
   width: 100%;
 }
 
 .card-title {
-  color: #6c757d;
-  font-family: Titan One , sans-serif;
+  color: #495057;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+body.dark .card-title {
+  color: #e9ecef;
 }
 
 .share-container {
-  left: 230px;
   position: absolute;
-  top: 220px;
-  width: fit-content;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  gap: 0.5rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .share-container {
+  background-color: rgba(45, 45, 45, 0.9);
 }
 
 .tags-container {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
 }
 
 .tag {
-  background-color: #6c757d;
-  border-radius: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
   color: white;
-  font-family: Source Sans Pro , sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
-  margin: 5px;
-  padding: 2px 7px;
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .tag {
+  background: linear-gradient(135deg, #434343 0%, #000 100%);
+}
+
+@media (max-width: 576px) {
+  .done-image {
+    height: 150px;
+  }
+  
+  .share-container {
+    right: 5px;
+    bottom: 5px;
+    padding: 6px;
+  }
 }

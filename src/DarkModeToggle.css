@@ -1,0 +1,43 @@
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 1050;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .dark-mode-toggle {
+  background-color: #2d2d2d;
+  color: #ffd700;
+  border: 2px solid #404040;
+}
+
+body.light .dark-mode-toggle {
+  background-color: #fff;
+  color: #2d2d2d;
+  border: 2px solid #e0e0e0;
+}
+
+@media (max-width: 576px) {
+  .dark-mode-toggle {
+    bottom: 70px;
+    right: 15px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,150 @@
+.header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-height: 70px;
+  width: 100%;
+  margin: 0;
+}
+
+body.dark .header-container {
+  background: linear-gradient(135deg, #434343 0%, #000000 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.profile-link:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.profile-link img {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  transition: filter 0.3s ease;
+}
+
+.profile-link:hover img {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.header-icon {
+  width: 42px;
+  height: 42px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.header-title {
+  font-family: 'Titan One', cursive;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.header-title:hover {
+  transform: scale(1.05);
+  text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.4);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  min-width: 48px;
+}
+
+.search-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.search-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1) rotate(-5deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.search-btn img {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 576px) {
+  .header-container {
+    padding: 0.75rem 1rem;
+    min-height: 60px;
+  }
+
+  .profile-link img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-title {
+    font-size: clamp(1.2rem, 5vw, 1.5rem);
+  }
+
+  .search-btn {
+    padding: 0.4rem;
+  }
+
+  .search-btn img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .header-center {
+    gap: 0.5rem;
+  }
+}

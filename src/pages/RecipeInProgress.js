@@ -68,8 +68,16 @@ function RecipeInProgress(props) {
 }
 
 RecipeInProgress.propTypes = {
-  history: PropTypes.shape().isRequired,
-  match: PropTypes.shape().isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+    path: PropTypes.string,
+    url: PropTypes.string,
+  }).isRequired,
 };
 
 export default RecipeInProgress;

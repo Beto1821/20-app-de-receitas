@@ -32,10 +32,10 @@ function FavoriteButton({ recipe: { id, name }, index }) {
 
 FavoriteButton.propTypes = {
   recipe: Proptypes.shape({
-    id: Proptypes.number,
+    id: Proptypes.string,
     name: Proptypes.string,
-  }),
-  index: Proptypes.number,
-}.isRequired;
+  }).isRequired,
+  index: Proptypes.number.isRequired,
+};
 
 export default FavoriteButton;

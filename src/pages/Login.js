@@ -2,6 +2,16 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Container, Form } from 'react-bootstrap';
 import { cleanLocalStorage, saveLocalStorage } from '../services/localStorage';
+import {
+  BeerIcon,
+  WineIcon,
+  CocktailIcon,
+  JuiceIcon,
+  CoffeeIcon,
+  HeartIcon,
+  LogoIcon,
+  ArrowIcon,
+} from '../components/DrinkIcons';
 import './Login.css';
 
 function Login(props) {
@@ -50,48 +60,70 @@ function Login(props) {
   };
 
   return (
-    <Container
-      className="d-flex flex-column justify-content-center align-items-center
-      main-page bg-success"
-    >
-      <h1 className="page-title p-0 m-0 ">Recipes</h1>
-      <h1 className="page-title p-0 m-0 mb-4 ml-5 pl-5">App</h1>
-      <Form className="mb-5">
-        <Form.Control
-          className="mb-2 fs-5 other-text"
-          type="email"
-          placeholder="E-mail"
-          value={ email }
-          onChange={ handleEmailChange }
-          data-testid="email-input"
-        />
+    <Container className="login-container">
+      <div className="login-decorations">
+        <BeerIcon />
+        <WineIcon />
+        <CocktailIcon />
+        <JuiceIcon />
+        <CoffeeIcon />
+        <HeartIcon />
+      </div>
 
-        <Form.Control
-          className="mb-2 fs-5 other-text"
-          type="password"
-          placeholder="Senha"
-          value={ password }
-          onChange={ handlePasswordChange }
-          data-testid="password-input"
-        />
+      <div className="login-content">
+        <div className="login-header">
+          <LogoIcon />
+          <h1 className="page-title">Recipes</h1>
+          <h2 className="page-subtitle">App</h2>
+          <p className="login-tagline">Discover Amazing Recipes & Drinks</p>
+        </div>
 
-        <Button
-          variant={ isDisabled ? 'danger' : 'primary' }
-          className="button fs-3"
-          type="button"
-          disabled={ isDisabled }
-          onClick={ submitUser }
-          data-testid="login-submit-btn"
-        >
-          Enter
-        </Button>
-      </Form>
+        <Form className="login-form">
+          <Form.Group className="form-group">
+            <Form.Label className="form-label">Email</Form.Label>
+            <Form.Control
+              className="form-input"
+              type="email"
+              placeholder="seu@email.com"
+              value={ email }
+              onChange={ handleEmailChange }
+              data-testid="email-input"
+            />
+          </Form.Group>
+
+          <Form.Group className="form-group">
+            <Form.Label className="form-label">Password</Form.Label>
+            <Form.Control
+              className="form-input"
+              type="password"
+              placeholder="••••••••"
+              value={ password }
+              onChange={ handlePasswordChange }
+              data-testid="password-input"
+            />
+          </Form.Group>
+
+          <Button
+            variant={ isDisabled ? 'secondary' : 'primary' }
+            className="login-button"
+            type="button"
+            disabled={ isDisabled }
+            onClick={ submitUser }
+            data-testid="login-submit-btn"
+          >
+            <span>Enter</span>
+            <ArrowIcon />
+          </Button>
+        </Form>
+      </div>
     </Container>
   );
 }
 
 Login.propTypes = {
-  history: PropTypes.shape().isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
 export default Login;

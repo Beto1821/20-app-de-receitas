@@ -1,0 +1,15 @@
+body.light {
+  --bg-color: #e9ecef;
+  --text-color: #212529;
+  --card-bg-color: #fff;
+  --header-bg-color: #198754;
+  --header-text-color: #fff;
+}
+
+body.dark {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --card-bg-color: #1e1e1e;
+  --header-bg-color: #212529;
+  --header-text-color: #e0e0e0;
+}

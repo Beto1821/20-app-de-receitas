@@ -60,7 +60,11 @@ function Profile({ history: { location: { pathname } } }) {
 }
 
 Profile.propTypes = {
-  history: PropTypes.shape().isRequired,
+  history: PropTypes.shape({
+    location: PropTypes.shape({
+      pathname: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default Profile;

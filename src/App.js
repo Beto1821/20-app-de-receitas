@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import RecipeInProgress from './pages/RecipeInProgress';
@@ -11,9 +12,12 @@ import Recipes from './pages/Recipes';
 import Login from './pages/Login';
 import { RecipeProvider } from './context/RecipeContext';
 import 'react-toastify/dist/ReactToastify.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import { useDarkMode } from './pages/useDarkMode';
+import DarkModeToggle from './DarkModeToggle';
 
 function App() {
+  const [theme, toggleTheme] = useDarkMode();
+
   return (
     <RecipeProvider>
       <ToastContainer
@@ -21,6 +25,7 @@ function App() {
         toastStyle={ { backgroundColor: '#198754' } }
         autoClose={ 1500 }
       />
+      <DarkModeToggle theme={ theme } toggleTheme={ toggleTheme } />
       <Switch>
         <Route path="/foods/:id/in-progress" component={ RecipeInProgress } />
         <Route path="/drinks/:id/in-progress" component={ RecipeInProgress } />

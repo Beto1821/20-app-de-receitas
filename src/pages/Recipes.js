@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
@@ -12,14 +12,20 @@ import './Recipes.css';
 
 function Recipes({ history: { location: { pathname } } }) {
   const { data, setData } = useContext(RecipeContext);
+  const initializedRef = useRef({});
+
   useEffect(() => {
     const getInfo = async () => {
-      if (pathname === '/drinks') {
-        const drinks = await fetchDrinks();
-        setData(drinks);
-      } else {
-        const foods = await fetchFoods();
-        setData(foods);
+      // Só busca dados se ainda não foi inicializado para esta rota
+      if (!initializedRef.current[pathname]) {
+        initializedRef.current[pathname] = true;
+        if (pathname === '/drinks') {
+          const drinks = await fetchDrinks();
+          setData(drinks);
+        } else {
+          const foods = await fetchFoods();
+          setData(foods);
+        }
       }
     };
     getInfo();
@@ -34,8 +40,11 @@ function Recipes({ history: { location: { pathname } } }) {
       <CategoryFilters pathname={ pathname } />
       <Row
         xs={ 2 }
-        md={ 4 }
-        className="g-4 p-0 m-0 mx-2 mb-5"
+        sm={ 2 }
+        md={ 3 }
+        lg={ 4 }
+        xl={ 5 }
+        className="g-3 p-0 m-0 mx-2 mb-5"
       >
         {
           data && data.map((item, index) => (

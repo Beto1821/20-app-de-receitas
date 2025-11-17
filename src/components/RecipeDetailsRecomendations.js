@@ -17,8 +17,8 @@ function Recomendations({ recomendations, pathname }) {
             <Link
               to={ pathname.includes('/foods')
                 ? `/drinks/${item.idDrink}` : `/foods/${item.idMeal}` }
+              key={ pathname.includes('/foods') ? item.idDrink : item.idMeal }
               data-testid={ `${index}-recomendation-card` }
-              key={ index }
             >
               <Card
                 border="secondary"
