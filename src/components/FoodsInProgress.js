@@ -57,7 +57,8 @@ function FoodInProgress(props) {
   };
 
   const copyToClipBoard = () => {
-    copy(`http://localhost:3000${path}`);
+    const baseUrl = process.env.REACT_APP_BASE_URL || window.location.origin;
+    copy(`${baseUrl}${path}`);
     toast.success('Link copied!');
   };
 

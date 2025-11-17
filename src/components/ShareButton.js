@@ -5,6 +5,8 @@ import copy from 'clipboard-copy';
 import shareIcon from '../images/shareIcon.svg';
 
 function ShareButton({ recipe: { id, name, type }, index }) {
+  const baseUrl = process.env.REACT_APP_BASE_URL || window.location.origin;
+  
   const shareClick = ({ target: { value } }) => {
     copy(value);
     toast.success('Link copied!');
@@ -17,7 +19,7 @@ function ShareButton({ recipe: { id, name, type }, index }) {
       src={ shareIcon }
       onClick={ shareClick }
       data-testid={ `${index}-horizontal-share-btn` }
-      value={ `http://localhost:3000/${type}s/${id}` }
+      value={ `${baseUrl}/${type}s/${id}` }
     />
   );
 }

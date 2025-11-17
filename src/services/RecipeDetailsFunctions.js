@@ -2,8 +2,10 @@ import { toast } from 'react-toastify';
 
 const copy = require('clipboard-copy');
 
+const getBaseUrl = () => process.env.REACT_APP_BASE_URL || window.location.origin;
+
 export const copyToClipBoard = (pathname) => {
-  copy(`http://localhost:3000${pathname}`);
+  copy(`${getBaseUrl()}${pathname}`);
   toast.success('Link copied!');
 };
 
