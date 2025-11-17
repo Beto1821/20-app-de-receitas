@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 import { saveIngredients } from '../services/localStorage';
 import RecipeContext from '../context/RecipeContext';
 
+/* eslint-disable sonarjs/cognitive-complexity */
 function CheckboxIngredient(props) {
   const { ingredients, history, recipe, path, id } = props;
 

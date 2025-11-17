@@ -58,7 +58,7 @@ function Recomendations({ recomendations, pathname }) {
 }
 
 Recomendations.propTypes = {
-  recomendations: PropTypes.arrayOf(PropTypes.object).isRequired,
+  recomendations: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   pathname: PropTypes.string.isRequired,
 };
 

@@ -6,7 +6,7 @@ import shareIcon from '../images/shareIcon.svg';
 
 function ShareButton({ recipe: { id, name, type }, index }) {
   const baseUrl = process.env.REACT_APP_BASE_URL || window.location.origin;
-  
+
   const shareClick = ({ target: { value } }) => {
     copy(value);
     toast.success('Link copied!');
