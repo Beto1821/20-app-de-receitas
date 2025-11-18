@@ -12,7 +12,7 @@ import Recipes from './pages/Recipes';
 import Login from './pages/Login';
 import { RecipeProvider } from './context/RecipeContext';
 import 'react-toastify/dist/ReactToastify.css';
-import { useDarkMode } from './pages/useDarkMode';
+import { useDarkMode } from './hooks/useDarkMode';
 import DarkModeToggle from './DarkModeToggle';
 
 function App() {

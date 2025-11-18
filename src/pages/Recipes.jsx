@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
@@ -12,20 +12,15 @@ import './Recipes.css';
 
 function Recipes({ history: { location: { pathname } } }) {
   const { data, setData } = useContext(RecipeContext);
-  const initializedRef = useRef({});
 
   useEffect(() => {
     const getInfo = async () => {
-      // Só busca dados se ainda não foi inicializado para esta rota
-      if (!initializedRef.current[pathname]) {
-        initializedRef.current[pathname] = true;
-        if (pathname === '/drinks') {
-          const drinks = await fetchDrinks();
-          setData(drinks);
-        } else {
-          const foods = await fetchFoods();
-          setData(foods);
-        }
+      if (pathname === '/drinks') {
+        const drinks = await fetchDrinks();
+        setData(drinks);
+      } else {
+        const foods = await fetchFoods();
+        setData(foods);
       }
     };
     getInfo();

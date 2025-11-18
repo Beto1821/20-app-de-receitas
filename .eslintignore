@@ -4,4 +4,4 @@ cypress/*
 coverage/*
 src/tests
 build/
-src/components/DrinkIcons.js
+src/components/DrinkIcons.jsx
